@@ -9,15 +9,15 @@ jobs:
   docker-file-lint-and-scan:
     runs-on: ubuntu-latest
     strategy:
-      fail-fast: false
-      matrix:
-        folders: ['backend', 'frontend']
+        fail-fast: false
+        matrix:
+            folders: ['backend' , 'frontend']
 
-      steps:
-        - name: Checkout code
-          uses: actions/checkout@v7
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v7
 
-        - name: ${{matrix.folders}} Dockerfile Lint
-          uses: hadolint/hadolint-action@v3.1.0
-          with:
+      - name: ${{matrix.folders}} Dockerfile Lint
+        uses: hadolint/hadolint-action@v3.1.0
+        with:
             dockerfile: ${{matrix.folders}}/Dockerfile
