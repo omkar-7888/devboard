@@ -1,0 +1,14 @@
+#Goal - TO run End to End DevSecOps CI Pipeline for Devboard Application
+
+
+name: DevSecOps CI Pipeline
+on:
+  push:
+    branches: [main]
+
+
+jobs:
+
+  #code stage with Shift Left Security Approach - SAST
+  code-quality:
+    uses: ./.github/workflows/code-quality.yml
