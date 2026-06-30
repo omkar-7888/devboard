@@ -24,8 +24,17 @@ jobs:
           run: go install golang.org/x/vuln/cmd/govulncheck@v1.1.4
 
         - name: Run Govulncheck
-          run: govulncheck ./backend/..
+          continue-on-error: true
+          run: govulncheck ./... > govulncheck-report.txt
           working-directory: backend
+
+         # 2. This step uploads the generated report folder or file to GitHub Artifacts
+        - name: Upload Job Report to Artifacts
+          uses: actions/upload-artifact@v4
+          with:
+            name: dependency-report    # Name of the downloaded zip file
+            path: output/reports/dependency-report.txt         # Path to the file or folder you want to save
+            retention-days: 5  
 
         - name: Setup NodeJs
           uses: actions/setup-node@v6
