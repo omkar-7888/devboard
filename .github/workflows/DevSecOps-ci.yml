@@ -9,6 +9,10 @@ on:
 
 jobs:
 
-  #code stage with Shift Left Security Approach - SAST
+  #code stage 
   code-quality:
     uses: ./.github/workflows/code-quality.yml
+
+  #secret scanning 
+  secret-scanning:
+    uses: ./.github/workflows/secret-Scanning.yml
