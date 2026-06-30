@@ -20,3 +20,7 @@ jobs:
   #dependency scanning
   dependency-scan:
     uses: ./.github/workflows/dependency-Scan.yml
+
+  #docker scanning
+  docker-scan:
+    uses: ./.github/workflows/docker-scan.yml
